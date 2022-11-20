@@ -2,7 +2,7 @@ const express = require('express');
 const app = express()
 const db = require('./config/db');
 
-const PORT = process.env.PORT || 7070;
+const PORT = process.env.PORT || 7080;
 
 const allRoutes = require('./router')
 
