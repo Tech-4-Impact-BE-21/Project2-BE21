@@ -30,7 +30,7 @@ module.exports = {
 
     getRekmedByID: async (req, res) => {
       try {
-        const rekmed = await dataRekmed.findById(req.params.id, "-__v")
+        const rekmed = await dataRekmed.findById(req.params.id, "-__v").populate("pasien", "name").populate("dokter", "name")
   
         if(!rekmed){
           res.status(404).json({
