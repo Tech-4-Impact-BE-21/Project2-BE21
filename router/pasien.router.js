@@ -3,17 +3,15 @@ const router = express.Router();
 const verifyPasien = require('../middleware/pasien.auth');
 
 const {
-  getPasienByID
+  getPasienByID,
+  getRekmedByID
 } = require("../controller/pasien.controller");
 
-const {
-  getRekmedByID
-} = require("../controller/rekmed.controller");
 
 const { loginPasien } = require('../controller/pasien.controller');
 
 router.post('/login', loginPasien);
 router.get("/:id",verifyPasien, getPasienByID);
-router.get("/:id",verifyPasien, getRekmedByID);
+router.get("/rekmed/:id",verifyPasien, getRekmedByID);
 
 module.exports = router;

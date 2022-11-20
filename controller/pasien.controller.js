@@ -1,4 +1,5 @@
 const dataPasien = require("../models/dataPasien");
+const dataRekmed = require("../models/rekmed");
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const UserPasien = require("../models/user.pasien");
@@ -77,6 +78,25 @@ module.exports = {
           message : "Succes updated user!",
           data : pasiens })
      
+      } catch (error) {
+        res.status(500).json({ message: "Server Error" })
+      }
+    },
+
+    getRekmedByID: async (req, res) => {
+      try {
+        const rekmed = await dataRekmed.findById(req.params.id, "-__v").populate("pasien", "name").populate("dokter", "name")
+  
+        if(!rekmed){
+          res.status(404).json({
+            message : "Could not Found"
+          });
+      } else{
+        res.status(200).json({
+          message: "You Searched for",
+          data: rekmed
+        })
+      }
       } catch (error) {
         res.status(500).json({ message: "Server Error" })
       }
