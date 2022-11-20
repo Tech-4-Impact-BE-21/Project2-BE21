@@ -7,7 +7,6 @@ const {
   getRekmedByID
 } = require("../controller/pasien.controller");
 
-
 const { loginPasien } = require('../controller/pasien.controller');
 
 router.post('/login', loginPasien);

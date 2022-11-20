@@ -77,7 +77,7 @@ module.exports = {
         res.status(201).send({ 
           message : "Succes updated user!",
           data : pasiens })
-     
+    
       } catch (error) {
         res.status(500).json({ message: "Server Error" })
       }
